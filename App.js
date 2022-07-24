@@ -70,15 +70,19 @@ export default function App() {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Text style={styles.title}>Respiratory Audio Analysis</Text>
-        <Text>Sound Recorder</Text>
+        <View style={styles.header_container}>
+          <Text style={styles.title}>Respiratory Audio Analysis</Text>
+          <Text>Sound Recorder</Text>
+        </View>
       </View>
-      <Text>{message}</Text>
-      <Button
-        title={recording ? 'Stop Recording' : 'Start Recording'}
-        onPress={recording ? stopRecording : startRecording} />
-      {getRecordingLines()}
-      <StatusBar style="auto" />
+      <View style={styles.body}>
+        <Text>{message}</Text>
+        <Button
+          title={recording ? 'Stop Recording' : 'Start Recording'}
+          onPress={recording ? stopRecording : startRecording} />
+        {getRecordingLines()}
+        <StatusBar style="auto" />
+      </View>
     </View>
   );
 }
@@ -90,11 +94,26 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
+  header_container: {
+    marginTop: 40,
+    alignItems: 'center',
+  },
   header: {
-    backgroundColor: 'red',
+    width: '100%',
+    height: '20%',
+    backgroundColor: '#fc7844',
+    alignItems: 'center',
+    justifyContent: 'center'
+  },
+  body: {
+    width: '100%',
+    height: '80%',
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center'
   },
   title: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: 'bold',
   },
   row: {
