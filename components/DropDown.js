@@ -29,7 +29,7 @@ const DropDown = ({ data = [], value = {}, onSelect = () => { } }) => {
                     return (
                         <TouchableOpacity
                             style={{
-                                backgroundColor: value.id == disease.id ? '#fc7844' : 'white',
+                                // backgroundColor: value.id == disease.id ? '#fc7844' : 'white',
                                 paddingVertical: 8,
                                 borderRadius: 4,
                                 paddingHorizontal: 6 
