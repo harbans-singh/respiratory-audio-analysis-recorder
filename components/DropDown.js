@@ -5,6 +5,10 @@ import imagesPath from './imagesPath'
 const DropDown = ({ data = [], value = {}, onSelect = () => { } }) => {
 
     const [showOptions, setShowOptions] = useState(false);
+    const onSelectedItem = (disease) => {
+        setShowOptions(false);
+        onSelect(disease);
+    }
 
     return (
         <View style={styles.container}>
@@ -14,12 +18,27 @@ const DropDown = ({ data = [], value = {}, onSelect = () => { } }) => {
                 onPress={() => setShowOptions(!showOptions)}
             >
                 <Text>{!!value ? value?.name : `Choose an option`}</Text>
-                <Image source={imagesPath.dropIcon} />
+                <Image style={{
+                    transform: [{rotate: showOptions? '180deg': '0deg'}]
+                }}
+                    source={imagesPath.dropIcon}
+                />
             </TouchableOpacity>
             {showOptions && (<View>
                 {data.map((disease, i) => {
                     return (
-                        <Text key={disease.id}>{disease.name}</Text>
+                        <TouchableOpacity
+                            style={{
+                                backgroundColor: value.id == disease.id ? '#fc7844' : 'white',
+                                paddingVertical: 8,
+                                borderRadius: 4,
+                                paddingHorizontal: 6 
+                            }}
+                            key={disease.id}
+                            onPress={() => onSelectedItem(disease)}
+                        >
+                            <Text>{disease.name}</Text>
+                        </TouchableOpacity>
                     )
                 })}
             </View>)}
@@ -40,7 +59,8 @@ const styles = StyleSheet.create({
         display: 'flex',
         justifyContent: 'space-between',
         alignItems: 'center',
-        flexDirection: 'row'
+        flexDirection: 'row',
+        marginBottom: 8
     },
 })
 
