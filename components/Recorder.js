@@ -11,17 +11,14 @@ const Recorder = () => {
     async function startRecording() {
         try {
             const permission = await Audio.requestPermissionsAsync();
-
             if (permission.status === "granted") {
                 await Audio.setAudioModeAsync({
                     allowsRecordingIOS: true,
                     playsInSilentModeIOS: true
                 });
-
                 const { recording } = await Audio.Recording.createAsync(
                     Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY
                 );
-
                 setRecording(recording);
             } else {
                 setMessage("Please grant permission to app to access microphone");
@@ -79,6 +76,10 @@ const Recorder = () => {
                     title={recording ? 'Stop Recording' : 'Start Recording'}
                     onPress={recording ? stopRecording : startRecording} />
                 {getRecordingLines()}
+                {/* <Button 
+                    title='Results'
+                    color='#eb4034'
+                    /> */}
                 <StatusBar style="auto" />
             </View>
         </View>
