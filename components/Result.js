@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, TouchableOpacity, StyleSheet, Text, ActivityIndicator, Image } from "react-native";
+import { View, TouchableOpacity, StyleSheet, Text, ActivityIndicator, Image, Button } from "react-native";
 import DropDown from './DropDown';
 import imagesPath from './imagesPath'
 
@@ -9,7 +9,7 @@ let diseases = [
     { id: 3, name: 'Pneumonia', perc: '15%' },
 ]
 
-const Result = () => {
+const Result = ({ navigation }) => {
     const [selectedItem, setSelectedItem] = useState(null);
 
     const onSelect = (item) => {
@@ -53,7 +53,7 @@ const styles = StyleSheet.create({
         flex: 1,
         backgroundColor: '#fff',
         alignItems: 'center',
-        justifyContent: 'center'
+        justifyContent: 'center',
     },
     header_container: {
         marginTop: 40,

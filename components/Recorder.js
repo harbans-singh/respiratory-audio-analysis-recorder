@@ -3,7 +3,7 @@ import React from 'react';
 import { Button, StyleSheet, Text, View, ScrollView } from 'react-native';
 import { Audio } from 'expo-av';
 
-const Recorder = () => {
+const Recorder = ({ navigation }) => {
     const [recording, setRecording] = React.useState();
     const [recordings, setRecordings] = React.useState([]);
     const [message, setMessage] = React.useState("");
@@ -80,6 +80,12 @@ const Recorder = () => {
                     title='Results'
                     color='#eb4034'
                     /> */}
+                <Button
+                    color='#eb4034'
+                    title='Result'
+                    onPress={() => {
+                        navigation.navigate('Result')
+                    }} />
                 <StatusBar style="auto" />
             </View>
         </View>
