@@ -1,7 +1,19 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { View, TouchableOpacity, StyleSheet, Text, ActivityIndicator } from "react-native";
+import DropDown from './DropDown';
+
+let diseases = [
+    { id: 1, name: 'Bronchiectasis', perc: '20%' },
+    { id: 2, name: 'URTI', perc: '30%' },
+    { id: 3, name: 'Pneumonia', perc: '15%' },
+]
 
 const Result = () => {
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    const onSelect = (item) => {
+        setSelectedItem(item);
+    }
     return (
         <View style={styles.container}>
             <View style={styles.header}>
@@ -17,8 +29,13 @@ const Result = () => {
                         <Text style={styles.row1_precent}>50%</Text>
                     </View>
                 </View>
-                {/* <View style={styles.row2}>
-                </View> */}
+                <View style={styles.row2}>
+                    <DropDown 
+                        value={selectedItem}
+                        data={diseases}
+                        onSelect={onSelect} 
+                    />
+                </View>
                 {/* <ActivityIndicator size='large' /> */}
             </View>
         </View>
